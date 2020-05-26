@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>  
+<head>
+<script>
+function onSubmit() {
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        alert(this.responseText);
+    };
+    xhttp.open("POST", '/saveJsonData', true);
+    xhttp.setRequestHeader('Content-Type',"application/json");
+    xhttp.send(JSON.stringify({"firstName": document.getElementById("firstName").value,"lastName": document.getElementById("lastName").value}));
+    
+}
+</script>
+</head>
+
+<body>
+    <form name="userForm">
+        <label> First Name : </label>
+        <br/>
+        <input id="firstName" name="firstName" />
+        <br/>
+        <label> Last Name : </label>
+        <br/>
+        <input id="lastName" name="lastName" />
+        <br/>
+        <input type="button" value="Submit" id="submit" onclick="onSubmit(); return false;" />
+    </form>
+</body>    
+</html>
